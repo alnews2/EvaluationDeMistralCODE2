@@ -1,0 +1,47 @@
+[run]
+# Configuration de la couverture de code
+
+# Chemins source
+source = src
+
+# Chemins à omettre
+omit = 
+    */tests/*
+    */__pycache__/*
+    */.venv/*
+    */venv/*
+    */site-packages/*
+
+[report]
+# Configuration du rapport
+
+# Format du rapport
+show_missing = True
+skip_covered = False
+
+# Exclusions
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
+    @abstractmethod
+
+# Précision
+precision = 2
+
+# Ordre de tri
+sort = Cover
+
+[html]
+# Configuration du rapport HTML
+
+directory = htmlcov
+title = CalculatorApp Coverage Report
+show_contexts = True
+
+[xml]
+# Configuration du rapport XML
+
+output = coverage.xml
