@@ -4,8 +4,6 @@ test_ui.py - Tests pour l'interface utilisateur
 Ce module contient les tests pour les composants UI de l'application.
 """
 
-import pytest
-
 from PySide6.QtCore import Qt
 
 
@@ -53,7 +51,8 @@ class TestDisplayComponent:
         qtbot.addWidget(display)
 
         assert display.text() == "0"
-        assert display.alignment() == (Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+        alignment = Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+        assert display.alignment() == alignment
 
     def test_display_set_value(self, qtbot):
         """Test la mise à jour de la valeur du Display."""
