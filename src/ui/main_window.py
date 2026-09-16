@@ -6,7 +6,7 @@ de l'application calculatrice. Elle utilise le ViewModel pour interagir
 avec le modèle.
 """
 
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Signal
 from PySide6.QtWidgets import (
     QGridLayout,
     QHBoxLayout,
@@ -134,8 +134,12 @@ class MainWindow(QMainWindow):
 
         # Boutons de contrôle (ligne supplémentaire)
         self._create_button(buttons_layout, "C", 4, 0, "ControlButton", "C")
-        self._create_button(buttons_layout, "CE", 4, 1, "ControlButton", "CE")
-        self._create_button(buttons_layout, "⌫", 4, 2, "ControlButton", "⌫")
+        self._create_button(
+            buttons_layout, "⌫", 4, 2, "ControlButton", "⌫"
+        )
+        self._create_button(
+            buttons_layout, "⌫", 4, 2, "ControlButton", "⌫"
+        )
 
         # Bouton vide pour l'équilibre
         empty_button = QPushButton()
@@ -161,18 +165,30 @@ class MainWindow(QMainWindow):
 
         # Configurer les signaux
         if button_type == "DigitButton":
-            button.clicked_with_value.connect(lambda v=value: self.digit_clicked.emit(v))
+            button.clicked_with_value.connect(
+         lambda v=value: self.digit_clicked.emit(v)
+     )
         elif button_type == "DecimalButton":
-            button.clicked_with_value.connect(lambda: self.decimal_clicked.emit())
+            button.clicked_with_value.connect(
+         lambda: self.decimal_clicked.emit()
+     )
         elif button_type == "OperationButton":
-            button.clicked_with_value.connect(lambda v=value: self.operation_clicked.emit(v))
+            button.clicked_with_value.connect(
+         lambda v=value: self.operation_clicked.emit(v)
+     )
         elif button_type == "ControlButton":
             if value == "C":
-                button.clicked_with_value.connect(lambda: self.clear_clicked.emit())
+                button.clicked_with_value.connect(
+         lambda: self.clear_clicked.emit()
+     )
             elif value == "CE":
-                button.clicked_with_value.connect(lambda: self.clear_all_clicked.emit())
+                button.clicked_with_value.connect(
+         lambda: self.clear_all_clicked.emit()
+     )
             elif value == "⌫":
-                button.clicked_with_value.connect(lambda: self.backspace_clicked.emit())
+                button.clicked_with_value.connect(
+         lambda: self.backspace_clicked.emit()
+     )
 
         layout.addWidget(button, row, col)
 
