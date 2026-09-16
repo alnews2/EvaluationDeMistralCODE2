@@ -4,7 +4,6 @@ test_calculator.py - Tests unitaires pour le modèle Calculator
 Ce module contient tous les tests unitaires pour la classe Calculator.
 """
 
-import pytest
 
 from src.app.calculator import Calculator, CalculationHistory, OperationType
 

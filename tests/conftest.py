@@ -104,7 +104,7 @@ def viewmodel_sqlite():
 def qapp(qtbot):
     """Retourne une application Qt pour les tests UI."""
     from PySide6.QtWidgets import QApplication
-    
+
     app = QApplication.instance()
     if app is None:
         app = QApplication([])
@@ -115,7 +115,7 @@ def qapp(qtbot):
 def main_window(qtbot, viewmodel_json):
     """Retourne une MainWindow pour les tests UI."""
     from src.ui.main_window import MainWindow
-    
+
     window = MainWindow(viewmodel_json)
     qtbot.addWidget(window)
     return window
@@ -134,8 +134,8 @@ def pytest_configure(config):
 def pytest_runtest_makereport(item, call):
     """Hook pour nettoyer après les tests."""
     outcome = yield
-    rep = outcome.get_result()
-    
+    outcome.get_result()
+
     # Nettoyer les fichiers de test
     test_dir = Path.home() / ".calculatorapp"
     if test_dir.exists():
