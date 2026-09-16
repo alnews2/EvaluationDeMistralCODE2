@@ -172,11 +172,11 @@ class MainWindow(QMainWindow):
             button.clicked_with_value.connect(lambda v=value: self.operation_clicked.emit(v))
         elif button_type == "ControlButton":
             if value == "C":
-            button.clicked_with_value.connect(lambda: self.clear_clicked.emit())
+                button.clicked_with_value.connect(lambda: self.clear_clicked.emit())
             elif value == "CE":
-            button.clicked_with_value.connect(lambda: self.clear_all_clicked.emit())
+                button.clicked_with_value.connect(lambda: self.clear_all_clicked.emit())
             elif value == "⌫":
-            button.clicked_with_value.connect(lambda: self.backspace_clicked.emit())
+                button.clicked_with_value.connect(lambda: self.backspace_clicked.emit())
 
         layout.addWidget(button, row, col)
 
