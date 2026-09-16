@@ -4,6 +4,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PySide6](https://img.shields.io/badge/Qt-PySide6-green.svg)](https://www.qt.io/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Codecov](https://img.shields.io/codecov/c/github/alnews2/EvaluationDeMistralCODE2?token=INVALID&label=coverage)](https://github.com/alnews2/EvaluationDeMistralCODE2)
+[![Version](https://img.shields.io/github/v/release/alnews2/EvaluationDeMistralCODE2?label=version)](https://github.com/alnews2/EvaluationDeMistralCODE2/releases)
 
 ---
 
