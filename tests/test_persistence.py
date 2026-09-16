@@ -5,11 +5,6 @@ Ce module contient tous les tests pour les repositories de persistance.
 """
 
 import json
-import os
-import tempfile
-from pathlib import Path
-
-import pytest
 
 from src.app.calculator import Calculator, OperationType
 
