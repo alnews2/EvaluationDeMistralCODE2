@@ -1,4 +1,3 @@
 [flake8]
 max-line-length = 100
-ignore = W503,E203
-per-file-ignores = src/ui/main_window.py:E122
+ignore = W503,E203,E122
