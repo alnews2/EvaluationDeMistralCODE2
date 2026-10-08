@@ -1,9 +1,9 @@
 """
-MainWindow - Fenêtre principale de l'application calculatrice
+MainWindow - Fen\u00eatre principale de l'application calculatrice
 
-Ce module contient la classe MainWindow qui représente la vue principale
+Ce module contient la classe MainWindow qui repr\u00e9sente la vue principale
 de l'application calculatrice. Elle utilise le ViewModel pour interagir
-avec le modèle.
+avec le mod\u00e8le.
 """
 
 from PySide6.QtCore import Signal
@@ -25,10 +25,10 @@ from .styles.dark_theme import DARK_THEME
 
 class MainWindow(QMainWindow):
     """
-    Fenêtre principale de la calculatrice.
+    Fen\u00eatre principale de la calculatrice.
 
-    Cette classe gère :
-    - La création de l'interface utilisateur
+    Cette classe g\u00e8re :
+    - La cr\u00e9ation de l'interface utilisateur
     - Les interactions avec l'utilisateur
     - La communication avec le ViewModel
     """
@@ -44,10 +44,10 @@ class MainWindow(QMainWindow):
 
     def __init__(self, viewmodel=None, parent=None):
         """
-        Initialise la fenêtre principale.
+        Initialise la fen\u00eatre principale.
 
         Args:
-            viewmodel: Le ViewModel à utiliser
+            viewmodel: Le ViewModel \u00e0 utiliser
             parent: Widget parent
         """
         super().__init__(parent)
@@ -57,17 +57,17 @@ class MainWindow(QMainWindow):
         self._setup_ui()
         self._connect_signals()
 
-        # Appliquer le thème
+        # Appliquer le th\u00e8me
         self._apply_theme()
 
     def _setup_window(self):
-        """Configure les propriétés de la fenêtre."""
+        """Configure les propri\u00e9t\u00e9s de la fen\u00eatre."""
         self.setWindowTitle("CalculatorApp")
         self.setFixedSize(400, 700)
         self.setWindowIconName("calculator")
 
     def _setup_ui(self):
-        """Crée l'interface utilisateur."""
+        """Cr\u00e9e l'interface utilisateur."""
         # Widget central
         central_widget = QWidget()
         central_widget.setObjectName("CentralWidget")
@@ -91,11 +91,11 @@ class MainWindow(QMainWindow):
         self._setup_storage_info(main_layout)
 
     def _setup_display_section(self, layout):
-        """Crée la zone d'affichage."""
+        """Cr\u00e9e la zone d'affichage."""
         display_layout = QVBoxLayout()
         display_layout.setSpacing(5)
 
-        # Affichage de l'opération
+        # Affichage de l'op\u00e9ration
         self.operation_display = OperationDisplay()
         display_layout.addWidget(self.operation_display)
 
@@ -106,13 +106,13 @@ class MainWindow(QMainWindow):
         layout.addLayout(display_layout)
 
     def _setup_buttons_section(self, layout):
-        """Crée la zone des boutons."""
+        """Cr\u00e9e la zone des boutons."""
         buttons_widget = QWidget()
         buttons_layout = QGridLayout(buttons_widget)
         buttons_layout.setSpacing(10)
         buttons_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Créer les boutons
+        # Cr\u00e9er les boutons
         self._create_button(buttons_layout, "7", 0, 0, "DigitButton", "7")
         self._create_button(buttons_layout, "8", 0, 1, "DigitButton", "8")
         self._create_button(buttons_layout, "9", 0, 2, "DigitButton", "9")
@@ -133,12 +133,12 @@ class MainWindow(QMainWindow):
         self._create_button(buttons_layout, "=", 3, 2, "OperationButton", "=")
         self._create_button(buttons_layout, "+", 3, 3, "OperationButton", "+")
 
-        # Boutons de contrôle (ligne supplémentaire)
+        # Boutons de contr\u00f4le (ligne suppl\u00e9mentaire)
         self._create_button(buttons_layout, "C", 4, 0, "ControlButton", "C")
-        self._create_button(buttons_layout, "⌫", 4, 2, "ControlButton", "⌫")
-        self._create_button(buttons_layout, "⌫", 4, 2, "ControlButton", "⌫")
+        self._create_button(buttons_layout, "CE", 4, 1, "ControlButton", "CE")
+        self._create_button(buttons_layout, "\u232b", 4, 2, "ControlButton", "\u232b")
 
-        # Bouton vide pour l'équilibre
+        # Bouton vide pour l'\u00e9quilibre
         empty_button = QPushButton()
         empty_button.setVisible(False)
         buttons_layout.addWidget(empty_button, 4, 3)
@@ -147,15 +147,15 @@ class MainWindow(QMainWindow):
 
     def _create_button(self, layout, text, row, col, button_type, value):
         """
-        Crée un bouton et l'ajoute au layout.
+        Cr\u00e9e un bouton et l'ajoute au layout.
 
         Args:
-            layout: Layout où ajouter le bouton
+            layout: Le layout parent
             text: Texte du bouton
             row: Ligne dans le grid
             col: Colonne dans le grid
             button_type: Type du bouton (pour le style)
-            value: Valeur associée au bouton
+            value: Valeur associ\u00e9e au bouton
         """
         button = CalculatorButton(text, button_type)
         button.setObjectName(f"{text}Button")
@@ -172,133 +172,109 @@ class MainWindow(QMainWindow):
                 button.clicked_with_value.connect(lambda: self.clear_clicked.emit())
             elif value == "CE":
                 button.clicked_with_value.connect(lambda: self.clear_all_clicked.emit())
-            elif value == "⌫":
+            elif value == "\u232b":
                 button.clicked_with_value.connect(lambda: self.backspace_clicked.emit())
 
         layout.addWidget(button, row, col)
 
     def _setup_history_section(self, layout):
-        """Crée la zone de l'historique."""
+        """Cr\u00e9e la zone de l'historique."""
+        # Cr\u00e9er le widget de l'historique
         history_widget = QWidget()
         history_layout = QVBoxLayout(history_widget)
-        history_layout.setSpacing(5)
+        history_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Titre
-        history_title = QLabel("Historique")
-        history_title.setObjectName("HistoryTitle")
-        history_title.setStyleSheet("color: #6c7086; font-size: 12px;")
-        history_layout.addWidget(history_title)
+        # Label de l'historique
+        history_label = QLabel("Historique :")
+        history_label.setStyleSheet("font-weight: bold; font-size: 14px;")
+        history_layout.addWidget(history_label)
 
         # Liste de l'historique
         self.history_list = QListWidget()
-        self.history_list.setObjectName("HistoryList")
-        self.history_list.setMaximumHeight(100)
+        self.history_list.setStyleSheet(
+            "QListWidget { background-color: #2d2d2d; border: 1px solid #444; "
+            "border-radius: 5px; padding: 5px; }"
+            "QListWidget::item { padding: 5px; }"
+            "QListWidget::item:selected { background-color: #444; }"
+        )
         history_layout.addWidget(self.history_list)
 
         # Bouton pour effacer l'historique
-        clear_history_btn = QPushButton("Effacer")
-        clear_history_btn.setObjectName("ClearHistoryButton")
-        clear_history_btn.clicked.connect(self.history_cleared.emit)
+        clear_history_btn = CalculatorButton("Effacer", "ControlButton")
+        clear_history_btn.clicked.connect(self._on_clear_history_clicked)
         history_layout.addWidget(clear_history_btn)
 
         layout.addWidget(history_widget)
 
     def _setup_storage_info(self, layout):
-        """Crée la zone d'information de stockage."""
-        storage_info_layout = QHBoxLayout()
-        storage_info_layout.setSpacing(10)
+        """Affiche les informations de stockage."""
+        storage_widget = QWidget()
+        storage_layout = QHBoxLayout(storage_widget)
+        storage_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Label d'information
+        storage_label = QLabel("Stockage :")
+        storage_label.setStyleSheet("font-size: 12px;")
+        storage_layout.addWidget(storage_label)
+
         self.storage_info_label = QLabel()
-        self.storage_info_label.setObjectName("StorageInfoLabel")
-        storage_info_layout.addWidget(self.storage_info_label)
+        self.storage_info_label.setStyleSheet("font-size: 12px; color: #aaa;")
+        storage_layout.addWidget(self.storage_info_label)
 
-        # Bouton pour changer de stockage
-        self.storage_button = QPushButton("JSON")
-        self.storage_button.setObjectName("StorageButton")
-        self.storage_button.setToolTip("Changer de type de stockage")
-        storage_info_layout.addWidget(self.storage_button)
-
-        layout.addLayout(storage_info_layout)
+        layout.addWidget(storage_widget)
 
     def _connect_signals(self):
-        """Connecte les signaux du ViewModel aux slots de la Vue."""
+        """Connecte les signaux aux slots."""
+        # Connecter les signaux du ViewModel
         if self.viewmodel:
-            # Connexion des propriétés
-            pass
+            self.digit_clicked.connect(self.viewmodel.on_digit_clicked)
+            self.decimal_clicked.connect(self.viewmodel.on_decimal_clicked)
+            self.operation_clicked.connect(self.viewmodel.on_operation_clicked)
+            self.clear_clicked.connect(self.viewmodel.on_clear_clicked)
+            self.clear_all_clicked.connect(self.viewmodel.on_clear_all_clicked)
+            self.backspace_clicked.connect(self.viewmodel.on_backspace_clicked)
+            self.history_cleared.connect(self.viewmodel.on_history_cleared)
 
     def _apply_theme(self):
-        """Applique le thème CSS."""
+        """Applique le th\u00e8me \u00e0 l'application."""
         self.setStyleSheet(DARK_THEME)
 
     def update_display(self, value: str):
-        """
-        Met à jour l'affichage principal.
-
-        Args:
-            value: Valeur à afficher
-        """
+        """Met \u00e0 jour l'affichage principal."""
         self.display.set_value(value)
 
     def update_operation_display(self, operation: str):
-        """
-        Met à jour l'affichage de l'opération.
-
-        Args:
-            operation: Opération à afficher
-        """
-        self.operation_display.set_operation(operation)
+        """Met \u00e0 jour l'affichage de l'op\u00e9ration."""
+        self.operation_display.set_value(operation)
 
     def update_history(self, history: list):
-        """
-        Met à jour l'historique.
-
-        Args:
-            history: Liste des entrées de l'historique
-        """
+        """Met \u00e0 jour l'historique."""
         self.history_list.clear()
         for entry in history:
             self.history_list.addItem(entry)
 
     def update_storage_info(self, info: str):
-        """
-        Met à jour l'information de stockage.
-
-        Args:
-            info: Information à afficher
-        """
+        """Met \u00e0 jour les informations de stockage."""
         self.storage_info_label.setText(info)
 
     def show_error(self, error: str):
-        """
-        Affiche une erreur.
-
-        Args:
-            error: Message d'erreur
-        """
-        self.display.set_error(error)
+        """Affiche une erreur."""
+        self.display.show_error(error)
 
     def clear_error(self):
         """Efface l'erreur."""
         self.display.clear_error()
 
     def set_storage_button_text(self, text: str):
-        """
-        Définit le texte du bouton de stockage.
+        """D\u00e9finit le texte du bouton de stockage."""
+        pass  # Impl\u00e9mentation future
 
-        Args:
-            text: Texte à afficher
-        """
-        self.storage_button.setText(text)
+    def _on_clear_history_clicked(self):
+        """G\u00e8re le clic sur le bouton Effacer l'historique."""
+        self.history_cleared.emit()
 
     def closeEvent(self, event):
-        """
-        Gère la fermeture de la fenêtre.
-
-        Args:
-            event: Événement de fermeture
-        """
-        # Sauvegarder l'état avant de fermer
+        """G\u00e8re la fermeture de la fen\u00eatre."""
+        # Sauvegarder l'\u00e9tat avant de fermer
         if self.viewmodel:
-            pass  # La sauvegarde est gérée par le ViewModel
+            pass  # La sauvegarde est g\u00e9r\u00e9e par le ViewModel
         event.accept()
