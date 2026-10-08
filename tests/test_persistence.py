@@ -233,9 +233,7 @@ class TestPersistenceIntegration:
 class TestRepositorySwitching:
     """Tests pour le changement de repository."""
 
-    def test_switch_from_json_to_sqlite(
-        self, temp_json_repository, temp_sqlite_repository
-    ):
+    def test_switch_from_json_to_sqlite(self, temp_json_repository, temp_sqlite_repository):
         """Test le passage de JSON à SQLite."""
         # Sauvegarder des données dans JSON
         state = {"current_value": "42"}
@@ -251,9 +249,7 @@ class TestRepositorySwitching:
         assert sqlite_data["state"]["current_value"] == "42"
         assert sqlite_data["history"] == ["5 + 3 = 8"]
 
-    def test_switch_from_sqlite_to_json(
-        self, temp_json_repository, temp_sqlite_repository
-    ):
+    def test_switch_from_sqlite_to_json(self, temp_json_repository, temp_sqlite_repository):
         """Test le passage de SQLite à JSON."""
         # Sauvegarder des données dans SQLite
         state = {"current_value": "42"}

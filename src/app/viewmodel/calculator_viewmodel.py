@@ -15,6 +15,7 @@ from ..persistence.sqlite_repository import SQLiteRepository
 
 class StorageType:
     """Types de stockage supportés."""
+
     JSON = "json"
     SQLITE = "sqlite"
 

@@ -15,8 +15,8 @@ from src.app.persistence.json_repository import JsonRepository
 from src.app.persistence.sqlite_repository import SQLiteRepository
 from src.app.viewmodel.calculator_viewmodel import CalculatorViewModel
 
-
 # Fixtures pour le modèle
+
 
 @pytest.fixture
 def calculator():
@@ -37,6 +37,7 @@ def calculator_with_state():
 
 
 # Fixtures pour la persistance
+
 
 @pytest.fixture
 def temp_json_repository():
@@ -86,6 +87,7 @@ def sqlite_repository_with_data(temp_sqlite_repository):
 
 # Fixtures pour le ViewModel
 
+
 @pytest.fixture
 def viewmodel_json():
     """Retourne un CalculatorViewModel avec stockage JSON."""
@@ -99,6 +101,7 @@ def viewmodel_sqlite():
 
 
 # Fixtures pour les tests Qt
+
 
 @pytest.fixture
 def qapp(qtbot):
@@ -122,6 +125,7 @@ def main_window(qtbot, viewmodel_json):
 
 
 # Configuration pytest
+
 
 def pytest_configure(config):
     """Configuration pytest."""

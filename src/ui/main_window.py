@@ -22,6 +22,7 @@ from .components.button import CalculatorButton
 from .components.display import Display, OperationDisplay
 from .styles.dark_theme import DARK_THEME
 
+
 class MainWindow(QMainWindow):
     """
     Fenêtre principale de la calculatrice.
@@ -134,12 +135,8 @@ class MainWindow(QMainWindow):
 
         # Boutons de contrôle (ligne supplémentaire)
         self._create_button(buttons_layout, "C", 4, 0, "ControlButton", "C")
-        self._create_button(
-            buttons_layout, "⌫", 4, 2, "ControlButton", "⌫"
-        )
-        self._create_button(
-            buttons_layout, "⌫", 4, 2, "ControlButton", "⌫"
-        )
+        self._create_button(buttons_layout, "⌫", 4, 2, "ControlButton", "⌫")
+        self._create_button(buttons_layout, "⌫", 4, 2, "ControlButton", "⌫")
 
         # Bouton vide pour l'équilibre
         empty_button = QPushButton()
@@ -305,4 +302,3 @@ class MainWindow(QMainWindow):
         if self.viewmodel:
             pass  # La sauvegarde est gérée par le ViewModel
         event.accept()
-
