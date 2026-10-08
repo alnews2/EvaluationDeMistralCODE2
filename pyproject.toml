@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "CalculatorApp"
 version = "1.0.0"
-description = "Calculatrice 4 opérations avec PySide6, double persistance et tests complets"
+description = "Calculatrice 4 operations avec PySide6, double persistance et tests complets"
 authors = ["Vibe Code Agent <vibe@mistral.ai>"]
 readme = "README.md"
 license = "MIT"
@@ -42,8 +42,6 @@ build-backend = "poetry.core.masonry.api"
 calculator = "src.main:main"
 
 
-
-
 [tool.black]
 line-length = 100
 target-version = ["py310", "py311", "py312"]
@@ -67,9 +65,12 @@ profile = "black"
 line_length = 100
 known_first_party = ["src", "tests"]
 
+[tool.flake8]
+max-line-length = 100
+ignore = "W503,E203,E122"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-
 addopts = "--cov=src --cov-report=term-missing"
 
 [tool.coverage.run]
@@ -77,12 +78,9 @@ source = ["src"]
 
 [tool.coverage.report]
 
-
-
 exclude_lines = [
     "pragma: no cover",
     "def __repr__",
     "raise NotImplementedError",
     "if TYPE_CHECKING:",
 ]
-
