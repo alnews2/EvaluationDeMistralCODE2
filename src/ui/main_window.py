@@ -7,16 +7,7 @@ avec le mod\u00e8le.
 """
 
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import (
-    QGridLayout,
-    QHBoxLayout,
-    QLabel,
-    QListWidget,
-    QMainWindow,
-    QPushButton,
-    QVBoxLayout,
-    QWidget,
-)
+from PySide6.QtWidgets import (QGridLayout,QHBoxLayout,QLabel,QListWidget,QMainWindow,QPushButton,QVBoxLayout,QWidget,)
 
 from .components.button import CalculatorButton
 from .components.display import Display, OperationDisplay
